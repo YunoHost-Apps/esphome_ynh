@@ -68,19 +68,6 @@ ram.runtime = "30M"
     type = "group"
     default = "visitors"
 
-    [install.user_name]
-    ask.en = "Dashboard account username"
-    help.en = "Enter a username for the dashboard (no account if left blank)"
-    type = "string"
-    optional = true
-
-    [install.user_password]
-    ask.en = "Dashboard account password"
-    help.en = "Enter a password for the dashboard (no account if left blank)"
-    type = "password"
-    optional = true
-
-
 [resources]
     # See the packaging documentation for the full set
     # of explanation regarding the behavior and properties for each of those
