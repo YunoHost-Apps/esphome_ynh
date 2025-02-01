@@ -35,8 +35,7 @@ yunohost service add "$app" --description="ESPHome dashboard" --log="/var/log/$a
 ynh_config_add_logrotate
 
 # Create the fail2ban configuration
-# TODO: Create the regex
-ynh_config_add_fail2ban --logpath="/var/log/nginx/${domain}-error.log" --failregex="Regex to match into the log for a failed login"
+ynh_config_add_fail2ban --logpath="/var/log/nginx/${domain}-error.log" --failregex='WARNING 401 POST \/login \(<HOST>\) \d*\.\d\dms$'
 
 #=================================================
 # START SYSTEMD SERVICE
