@@ -88,6 +88,9 @@ ram.runtime = "30M"
 
     autoupdate.strategy = "latest_github_tag"
 
+    [resources.system_user]
+    # Create user for esphome
+
     [resources.install_dir]
     # This will create/remove the install dir as /var/www/$app
     # and store the corresponding setting $install_dir
