@@ -1,3 +1,1 @@
-This is a dummy admin doc for this app
-
-The app install dir is `__INSTALL_DIR__`
+ESPHome itself is stored in `__INSTALL_DIR__`, and device configuration files are stored in `__DATA_DIR__`.

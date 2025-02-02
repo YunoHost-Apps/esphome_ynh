@@ -1,3 +1,1 @@
-Ceci est une fausse doc d'admin pour cette app
-
-Le dossier d'install de l'app est `__INSTALL_DIR__`
+ESPHome lui-même est stocké dans `__INSTALL_DIR__`, et les fichiers de configuration des périphériques sont stockés dans `__DATA_DIR__`.
