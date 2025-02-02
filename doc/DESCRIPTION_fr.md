@@ -1,1 +1,1 @@
-Ceci est une fausse description des fonctionalités de l'app
+ESPHome est un système permettant de contrôler vos microcontrôleurs à l'aide de fichiers de configuration simples mais puissants, et de les contrôler à distance via Home. fichiers de configuration simples mais puissants et de les contrôler à distance à travers domotique.
