@@ -79,7 +79,7 @@ ram.runtime = "30M"
     #    ynh_setup_source --dest_dir="$install_dir"
     # You can also define other assets than "main" and add --source_id="foobar" in the previous command
     url = "https://github.com/esphome/esphome/archive/refs/tags/2024.12.4.tar.gz"
-    sha256 = "TdLbAILMeDxaAOs8woFrlP8UvBlg5sKSwO5kGHz6Wt0="
+    sha256 = "eb9a532cf2c218d8cd246d2793fd94ae90d53f85ed2e9a76ea1c6b5d9160a13c"
 
     # These infos are used by https://github.com/YunoHost/apps/blob/master/tools/autoupdate_app_sources/autoupdate_app_sources.py
     # to auto-update the previous asset urls and sha256sum + manifest version
