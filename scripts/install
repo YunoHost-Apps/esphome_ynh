@@ -21,6 +21,7 @@ python -m venv "$install_dir/venv"
 
 ynh_script_progression "Installing dependencies in virtual environment"
 $install_dir/venv/bin/pip install -r "$install_dir/requirements.txt"
+$install_dir/venv/bin/pip install esphome
 
 #=================================================
 # SYSTEM CONFIGURATION
