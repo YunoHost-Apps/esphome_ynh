@@ -18,10 +18,9 @@ chown -R "$app:www-data" "$install_dir"
 
 ynh_script_progression "Creating virtual environment"
 python -m venv "$install_dir/venv"
-source "$install_dir/venv/bin/activate"
 
 ynh_script_progression "Installing dependencies in virtual environment"
-pip install -r "$install_dir/requirements.txt"
+$install_dir/venv/bin/pip install -r "$install_dir/requirements.txt"
 
 #=================================================
 # SYSTEM CONFIGURATION
