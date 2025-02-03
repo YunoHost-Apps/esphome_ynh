@@ -49,7 +49,7 @@ sso = "false"
 
 # FIXME: replace with an **estimate** minimum disk and RAM requirements. e.g. 20M, 400M, 1G...
 disk = "700M"
-ram.build = "700M"
+ram.build = "300M"
 ram.runtime = "30M"
 
 [install]
