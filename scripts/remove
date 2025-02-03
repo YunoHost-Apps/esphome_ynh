@@ -29,7 +29,7 @@ ynh_script_progression "Removing system configurations related to $app..."
 
 ynh_config_remove_fail2ban
 
-ynh_nginx_config_remove
+ynh_config_remove_nginx
 
 ynh_config_remove_logrotate
 
