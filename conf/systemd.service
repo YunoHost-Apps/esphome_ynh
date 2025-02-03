@@ -7,7 +7,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/venv/bin/python __INSTALL_DIR__/esphome/__main__.py --port __PORT__ --address __DOMAIN____PATH__  __DATA_DIR__
+ExecStart=__INSTALL_DIR__/venv/bin/python3 __INSTALL_DIR__/esphome/__main__.py dashboard --port __PORT__ --address __PATH__  __DATA_DIR__
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
