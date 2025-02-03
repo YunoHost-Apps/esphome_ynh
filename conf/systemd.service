@@ -8,6 +8,9 @@ User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
 ExecStart=__INSTALL_DIR__/venv/bin/python -m esphome dashboard --port __PORT__ __DATA_DIR__
+RestartForceExitStatus=100
+Restart=on-failure
+RestartSec=5s
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
