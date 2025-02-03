@@ -40,3 +40,11 @@ ynh_config_add_fail2ban --logpath="/var/log/nginx/${domain}-error.log" --failreg
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
+
+ynh_systemctl --service="$app" --action="start"
+
+#================================================
+# END OF SCRIPT
+#================================================
+
+ynh_script_progression "Installation of $app completed"
