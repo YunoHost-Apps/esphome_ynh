@@ -12,15 +12,12 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-ynh_setup_source --dest_dir="$install_dir"
-
 chown -R "$app:www-data" "$install_dir"
 
 ynh_script_progression "Creating virtual environment"
 python -m venv "$install_dir/venv"
 
 ynh_script_progression "Installing dependencies in virtual environment"
-$install_dir/venv/bin/pip install -r "$install_dir/requirements.txt"
 $install_dir/venv/bin/pip install esphome
 
 #=================================================
