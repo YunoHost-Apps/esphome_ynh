@@ -7,7 +7,7 @@ name = "ESPHome"
 description.en = "Build your own smart home devices using ESPHome, no programming experience required."
 description.fr = "Construire vos propres appareils domestiques intelligents à l'aide d'ESPHome, aucune expérience en programmation n'est requise."
 
-version = "2024.12.4~ynh0"
+version = "2024.12.4~ynh1"
 
 maintainers = ["WGrav01"]
 
