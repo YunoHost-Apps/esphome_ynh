@@ -103,4 +103,4 @@ ram.runtime = "30M"
 
     [resources.apt]
     # This will automatically install/uninstall the following apt packages
-    packages = "python3 python3-venv python3-wheel"
+    packages = "python3 python3-venv"
