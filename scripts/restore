@@ -31,7 +31,7 @@ ynh_restore "$data_dir"
 chown -R "$app:www-data" "$data_dir"
 
 #=================================================
-# RESTORE SYSTEM CONFIGURATIONS
+# RESTORE CONFIGURATIONS AND LOGS
 #=================================================
 ynh_script_progression "Restoring system configurations related to $app..."
 
@@ -48,13 +48,6 @@ ynh_restore "/etc/fail2ban/jail.d/$app.conf"
 ynh_restore "/etc/fail2ban/filter.d/$app.conf"
 ynh_systemctl --action=restart --service=fail2ban
 
-#=================================================
-# RESTORE VARIOUS FILES
-#=================================================
-
-ynh_restore "/etc/cron.d/$app"
-ynh_restore "/etc/$app/"
-
 ### For apps with huge logs, you might want to not backup logs every time:
 ### The mkdir call is just here in case the log directory was not backed up.
 ### mkdir -p "/var/log/$app"
@@ -62,14 +55,13 @@ ynh_restore "/etc/$app/"
 ### ynh_restore "/var/log/$app/" || true
 ###
 ### For other apps, the simple way is better:
+ynh_script_progression "Restoring logs for $app..."
 ynh_restore "/var/log/$app/"
 
-#=================================================
-# RELOAD NGINX AND THE APP SERVICE
-#=================================================
 ynh_script_progression "Restoring nginx and $app's service..."
 
-ynh_systemctl --service="$app" --action="start"
+ynh_systemctl --service="$app" --action=start
+
 ynh_systemctl --service=nginx --action=reload
 
 #=================================================
