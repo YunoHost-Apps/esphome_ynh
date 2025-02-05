@@ -22,7 +22,7 @@ code = "https://github.com/esphome/esphome"
 # to easily track CVE (=security reports) related to apps. The CPE may be obtained by searching here:
 # https://nvd.nist.gov/products/cpe/search.
 # For example, for Nextcloud, the CPE is 'cpe:2.3:a:nextcloud:nextcloud' (no need to include the version number)
-cpe = "cpe:2.3:a:esphome:esphome:-:*:*:*:*:*:*:*"
+cpe = "cpe:2.3:a:esphome:esphome"
 
 # This is meant to be an URL where people can financially support this app, especially when its development is based
 # on volunteers and/or financed by its community. YunoHost may later advertise it in the webadmin.
@@ -36,11 +36,11 @@ multi_instance = true
 
 # Not to confuse with the "sso" key: the "ldap" key corresponds to wether or not a user *can* login on the app using
 # its YunoHost credentials.
-ldap = "false"
+ldap = false
 
 # Not to confuse with the "ldap" key: the "sso" key corresponds to wether or not a user is *automatically logged-in*
 # on the app when logged-in on the YunoHost portal.
-sso = "false"
+sso = false
 
 disk = "700M"
 ram.build = "300M"
