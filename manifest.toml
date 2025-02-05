@@ -18,14 +18,12 @@ website = "https://esphome.io/"
 demo = "https://web.esphome.io/"
 userdoc = "https://esphome.io"
 code = "https://github.com/esphome/esphome"
-# FIXME: optional but recommended if relevant, this is meant to contain the Common Platform Enumeration, which is
 # sort of a standard id for applications defined by the NIST. In particular, YunoHost may use this is in the future
 # to easily track CVE (=security reports) related to apps. The CPE may be obtained by searching here:
 # https://nvd.nist.gov/products/cpe/search.
 # For example, for Nextcloud, the CPE is 'cpe:2.3:a:nextcloud:nextcloud' (no need to include the version number)
 cpe = "cpe:2.3:a:esphome:esphome:-:*:*:*:*:*:*:*"
 
-# FIXME: optional but recommended (or remove if irrelevant / not applicable).
 # This is meant to be an URL where people can financially support this app, especially when its development is based
 # on volunteers and/or financed by its community. YunoHost may later advertise it in the webadmin.
 fund = "https://esphome.io/guides/supporters.html"
@@ -33,21 +31,17 @@ fund = "https://esphome.io/guides/supporters.html"
 [integration]
 yunohost = ">= 11.2.30"
 helpers_version = "2.1"
-# FIXME: can be replaced by a list of supported archs using the dpkg --print-architecture nomenclature (amd64/i386/armhf/arm64), for example: ["amd64", "i386"]
-architectures = ["amd64", "armv7", "arm64"]
+architectures = "all"
 multi_instance = true
 
-# FIXME: replace with true, false, or "not_relevant".
 # Not to confuse with the "sso" key: the "ldap" key corresponds to wether or not a user *can* login on the app using
 # its YunoHost credentials.
 ldap = "false"
 
-# FIXME: replace with true, false, or "not_relevant".
 # Not to confuse with the "ldap" key: the "sso" key corresponds to wether or not a user is *automatically logged-in*
 # on the app when logged-in on the YunoHost portal.
 sso = "false"
 
-# FIXME: replace with an **estimate** minimum disk and RAM requirements. e.g. 20M, 400M, 1G...
 disk = "700M"
 ram.build = "300M"
 ram.runtime = "30M"
@@ -109,4 +103,4 @@ ram.runtime = "30M"
 
     [resources.apt]
     # This will automatically install/uninstall the following apt packages
-    packages = "python3"
+    packages = "python3 python3-venv"
