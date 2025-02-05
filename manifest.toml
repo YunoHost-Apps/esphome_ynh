@@ -5,7 +5,7 @@ packaging_format = 2
 id = "esphome"
 name = "ESPHome"
 description.en = "Build your own smart home devices using ESPHome"
-description.fr = "Construire vos propres appareils domestiques intelligents à l'aide d'ESPHome"
+description.fr = "Créez vos propres appareils domestiques intelligents avec ESPHome"
 
 version = "2024.12.4~ynh1"
 
