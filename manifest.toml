@@ -4,28 +4,20 @@ packaging_format = 2
 
 id = "esphome"
 name = "ESPHome"
-description.en = "Build your own smart home devices using ESPHome, no programming experience required."
-description.fr = "Construire vos propres appareils domestiques intelligents à l'aide d'ESPHome, aucune expérience en programmation n'est requise."
+description.en = "Build your own smart home devices using ESPHome"
+description.fr = "Construire vos propres appareils domestiques intelligents à l'aide d'ESPHome"
 
 version = "2024.12.4~ynh1"
 
 maintainers = ["WGrav01"]
 
 [upstream]
-# NB: Only the "license" key is mandatory. Remove entries for which there's no relevant data
-license = "GPL-3.0" # you can see the available licenses identifiers list here: https://spdx.org/licenses/
+license = "GPL-3.0"
 website = "https://esphome.io/"
 demo = "https://web.esphome.io/"
 userdoc = "https://esphome.io"
 code = "https://github.com/esphome/esphome"
-# sort of a standard id for applications defined by the NIST. In particular, YunoHost may use this is in the future
-# to easily track CVE (=security reports) related to apps. The CPE may be obtained by searching here:
-# https://nvd.nist.gov/products/cpe/search.
-# For example, for Nextcloud, the CPE is 'cpe:2.3:a:nextcloud:nextcloud' (no need to include the version number)
 cpe = "cpe:2.3:a:esphome:esphome"
-
-# This is meant to be an URL where people can financially support this app, especially when its development is based
-# on volunteers and/or financed by its community. YunoHost may later advertise it in the webadmin.
 fund = "https://esphome.io/guides/supporters.html"
 
 [integration]
@@ -34,12 +26,7 @@ helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
-# Not to confuse with the "sso" key: the "ldap" key corresponds to wether or not a user *can* login on the app using
-# its YunoHost credentials.
 ldap = false
-
-# Not to confuse with the "ldap" key: the "sso" key corresponds to wether or not a user is *automatically logged-in*
-# on the app when logged-in on the YunoHost portal.
 sso = false
 
 disk = "700M"
@@ -48,59 +35,37 @@ ram.runtime = "30M"
 
 [install]
     [install.domain]
-    # this is a generic question - ask strings are automatically handled by YunoHost's core
     type = "domain"
 
     [install.path]
-    # this is a generic question - ask strings are automatically handled by YunoHost's core
     type = "path"
     default = "/esphome"
 
     [install.init_main_permission]
-    # this is a generic question - ask strings are automatically handled by YunoHost's core
-    # This won't be saved as setting and will instead be used to initialize the SSOwat permission
     type = "group"
     default = "visitors"
 
 [resources]
-    # See the packaging documentation for the full set
-    # of explanation regarding the behavior and properties for each of those
 
     [resources.sources]
 
     [resources.sources.main]
-    # This will pre-fetch the asset which can then be deployed during the install/upgrade scripts with :
-    #    ynh_setup_source --dest_dir="$install_dir"
-    # You can also define other assets than "main" and add --source_id="foobar" in the previous command
+
     url = "https://github.com/esphome/esphome/archive/refs/tags/2024.12.4.tar.gz"
     sha256 = "eb9a532cf2c218d8cd246d2793fd94ae90d53f85ed2e9a76ea1c6b5d9160a13c"
-
-    # These infos are used by https://github.com/YunoHost/apps/blob/master/tools/autoupdate_app_sources/autoupdate_app_sources.py
-    # to auto-update the previous asset urls and sha256sum + manifest version
-    # assuming the upstream's code repo is on github and relies on tags or releases
-    # See the 'sources' resource documentation for more details
 
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
-    # Create user for esphome
 
     [resources.install_dir]
-    # This will create/remove the install dir as /var/www/$app
-    # and store the corresponding setting $install_dir
 
     [resources.data_dir]
-    # This will create/remove the data dir as /home/yunohost.app/$app
-    # and store the corresponding setting $data_dir
 
     [resources.permissions]
-    # This will configure SSOwat permission for $domain/$path/
-    # The initial allowed group of user is configured via the init_main_permission question (public=visitors, private=all_users)
     main.url = "/"
 
     [resources.ports]
-    # This will pick a random port for reverse-proxying and store it as the $port setting
 
     [resources.apt]
-    # This will automatically install/uninstall the following apt packages
-    packages = "python3 python3-venv"
+    packages = "python3, python3-venv"
