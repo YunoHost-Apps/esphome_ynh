@@ -12,7 +12,7 @@ chown -R "$app:" "$install_dir"
 
 pushd $install_dir
     python3 -m venv $install_dir/venv
-    ynh_hide_warnings $install_dir/venv/bin/pip install esphome --upgrade pip 
+    ynh_hide_warnings $install_dir/venv/bin/pip install esphome --upgrade pip
 popd
 
 #=================================================
@@ -20,7 +20,7 @@ popd
 #=================================================
 ynh_script_progression "Adding system configurations related to $app..."
 
-ynh_config_add_systemd
+ynh_config_add_systemd --jinja
 
 yunohost service add "$app" --description="ESPHome dashboard" --log="/var/log/$app/$app.log"
 
