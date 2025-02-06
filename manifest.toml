@@ -45,6 +45,16 @@ ram.runtime = "30M"
     type = "group"
     default = "visitors"
 
+    [install.account_username]
+    ask.en = "(Optional) Enter a username to use with ESPHome."
+    optional = true
+    type = "string"
+
+    [install.account_password]
+    ask.en = "(Optional) Enter a password for use with ESPHome."
+    optional = true
+    type = "password"
+
 [resources]
 
     [resources.sources]
