@@ -20,7 +20,7 @@ popd
 #=================================================
 ynh_script_progression "Adding system configurations related to $app..."
 
-ynh_config_add_systemd --jinja
+ynh_config_add --jinja --template="systemd.service" --destination="/etc/systemd/system/$app.service"
 
 yunohost service add "$app" --description="ESPHome dashboard" --log="/var/log/$app/$app.log"
 
