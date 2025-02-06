@@ -7,7 +7,11 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
+{% if account_username is defined and account_password is defined %}
+ExecStart=__INSTALL_DIR__/venv/bin/python -m esphome dashboard --port __PORT__ --username __ACCOUNT_USERNAME__ --password __ACCOUNT_PASSWORD__ __DATA_DIR__
+{% else %}
 ExecStart=__INSTALL_DIR__/venv/bin/python -m esphome dashboard --port __PORT__ __DATA_DIR__
+{% endif %}
 RestartForceExitStatus=100
 Restart=on-failure
 RestartSec=5s
