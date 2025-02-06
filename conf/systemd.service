@@ -4,18 +4,18 @@ After=network.target
 
 [Service]
 Type=simple
-User=__APP__
-Group=__APP__
-WorkingDirectory=__INSTALL_DIR__/
+User={{ app }}
+Group={{ app }}
+WorkingDirectory={{ install_dir }}
 {% if account_username is defined and account_password is defined %}
-ExecStart=__INSTALL_DIR__/venv/bin/python -m esphome dashboard --port __PORT__ --username __ACCOUNT_USERNAME__ --password __ACCOUNT_PASSWORD__ __DATA_DIR__
+ExecStart={{ install_dir }}/venv/bin/python -m esphome dashboard --port {{ port }} --username {{ account_username }} --password {{ account_password }} {{ data_dir }}
 {% else %}
-ExecStart=__INSTALL_DIR__/venv/bin/python -m esphome dashboard --port __PORT__ __DATA_DIR__
+ExecStart={{ install_dir }}/venv/bin/python -m esphome dashboard --port {{ port }} {{ data_dir }}
 {% endif %}
 RestartForceExitStatus=100
 Restart=on-failure
 RestartSec=5s
-StandardOutput=append:/var/log/__APP__/__APP__.log
+StandardOutput=append:/var/log/{{ app }}/{{ app }}.log
 StandardError=inherit
 
 ### Depending on specificities of your service/app, you may need to tweak these
