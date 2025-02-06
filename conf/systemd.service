@@ -8,7 +8,7 @@ User={{ app }}
 Group={{ app }}
 WorkingDirectory={{ install_dir }}
 {% if account_username is defined and account_username|length and account_password is defined and account_password|length %}
-ExecStart={{ install_dir }}/venv/bin/python -m esphome dashboard --port {{ port }} --username {{ account_username }} --password {{ account_password }} {{ data_dir }}
+ExecStart={{ install_dir }}/venv/bin/python -m esphome dashboard --port {{ port }} --username '{{ account_username }}' --password '{{ account_password }}' {{ data_dir }}
 {% else %}
 ExecStart={{ install_dir }}/venv/bin/python -m esphome dashboard --port {{ port }} {{ data_dir }}
 {% endif %}
