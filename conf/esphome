@@ -3,4 +3,4 @@
 # ESPHome sometimes tries to call /usr/bin/esphome to compile files, which doesn't work as esphome itself is installed in a python virtual environment.
 # This script goes in /usr/bin, and essentially intercepts ESPHome's commands and brings it back to the virtual environment.
 
-__INSTALL_DIR__/venv/bin/python -m esphome
+__INSTALL_DIR__/venv/bin/python -m esphome "$@"
