@@ -38,6 +38,7 @@ ynh_systemctl --action=restart --service=fail2ban
 ynh_restore "/var/log/$app/"
 
 ynh_restore "/usr/bin/esphome"
+chmod +x "/usr/bin/esphome"
 
 #=================================================
 # RELOAD NGINX AND PHP-FPM OR THE APP SERVICE

@@ -31,6 +31,7 @@ ynh_config_add_nginx
 ynh_config_add_fail2ban --logpath="/var/log/nginx/${domain}-error.log" --failregex='WARNING 401 POST \/login \(<HOST>\) \d*\.\d\dms$'
 
 ynh_config_add --template="esphome" --destination="/usr/bin/esphome"
+chmod +x "/usr/bin/esphome"
 
 #=================================================
 # START SYSTEMD SERVICE
