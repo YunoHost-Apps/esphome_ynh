@@ -12,7 +12,7 @@ chown -R "$app:" "$install_dir"
 
 pushd $install_dir
     python3 -m venv $install_dir/venv
-    ynh_hide_warnings $install_dir/venv/bin/pip install esphome --upgrade pip 
+    ynh_hide_warnings $install_dir/venv/bin/pip install esphome --upgrade pip
 popd
 
 #=================================================
@@ -29,6 +29,10 @@ ynh_config_add_logrotate
 ynh_config_add_nginx
 
 ynh_config_add_fail2ban --logpath="/var/log/nginx/${domain}-error.log" --failregex='WARNING 401 POST \/login \(<HOST>\) \d*\.\d\dms$'
+
+ynh_config_add --template="esphome" --destination="/usr/bin/esphome"
+chown "$app:" "/usr/bin/esphome"
+chmod u+x "/usr/bin/esphome"
 
 #=================================================
 # START SYSTEMD SERVICE

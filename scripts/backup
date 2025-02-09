@@ -32,6 +32,8 @@ ynh_backup "/etc/fail2ban/filter.d/$app.conf"
 
 ynh_backup "/var/log/$app/"
 
+ynh_backup "/usr/bin/esphome"
+
 #=================================================
 # END OF SCRIPT
 #=================================================
