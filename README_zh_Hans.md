@@ -21,7 +21,7 @@
 ESPHome is a system to control your microcontrollers by simple yet powerful configuration files and control them remotely through Home Automation systems. All you need to do is write YAML configuration files; the rest (over-the-air updates, compiling) is all handled by ESPHome.
 
 
-**分发版本：** 2024.12.4~ynh1
+**分发版本：** 2025.2.0~ynh1
 
 **演示：** <https://web.esphome.io/>
 
