@@ -21,7 +21,7 @@ Il NE doit PAS être modifié à la main.
 ESPHome est un système permettant de contrôler vos microcontrôleurs par des fichiers de configuration simples mais puissants et de les contrôler à distance par le biais de systèmes domotiques. Tout ce que vous avez à faire est d'écrire des fichiers de configuration YAML ; le reste (mises à jour over-the-air, compilation) est entièrement pris en charge par ESPHome.
 
 
-**Version incluse :** 2025.3.0~ynh1
+**Version incluse :** 2025.3.1~ynh1
 
 **Démo :** <https://web.esphome.io/>
 
