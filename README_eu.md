@@ -21,7 +21,7 @@ EZ editatu eskuz.
 ESPHome is a system to control your microcontrollers by simple yet powerful configuration files and control them remotely through Home Automation systems. All you need to do is write YAML configuration files; the rest (over-the-air updates, compiling) is all handled by ESPHome.
 
 
-**Paketatutako bertsioa:** 2025.3.1~ynh1
+**Paketatutako bertsioa:** 2025.3.2~ynh1
 
 **Demoa:** <https://web.esphome.io/>
 
@@ -42,7 +42,7 @@ ESPHome is a system to control your microcontrollers by simple yet powerful conf
 
 Bidali `pull request`a [`testing` abarrera](https://github.com/YunoHost-Apps/esphome_ynh/tree/testing).
 
-`testing` abarra probatzeko, ondorengoa egin:
+`testing` abarra probatzeko, honakoa egin:
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/esphome_ynh/tree/testing --debug

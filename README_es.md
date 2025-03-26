@@ -3,7 +3,7 @@ Este archivo README esta generado automaticamente<https://github.com/YunoHost/ap
 No se debe editar a mano.
 -->
 
-# ESPHome para Yunohost
+# ESPHome para YunoHost
 
 [![Nivel de integración](https://apps.yunohost.org/badge/integration/esphome)](https://ci-apps.yunohost.org/ci/apps/esphome/)
 ![Estado funcional](https://apps.yunohost.org/badge/state/esphome)
@@ -21,7 +21,7 @@ No se debe editar a mano.
 ESPHome is a system to control your microcontrollers by simple yet powerful configuration files and control them remotely through Home Automation systems. All you need to do is write YAML configuration files; the rest (over-the-air updates, compiling) is all handled by ESPHome.
 
 
-**Versión actual:** 2025.3.1~ynh1
+**Versión actual:** 2025.3.2~ynh1
 
 **Demo:** <https://web.esphome.io/>
 
