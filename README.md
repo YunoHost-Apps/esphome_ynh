@@ -4,7 +4,7 @@ It shall NOT be edited by hand.
 -->
 
 <h1>
-  <img src="https://raw.githubusercontent.com/YunoHost/apps/master/logos/esphome.png" width="32px" alt="Logo of ESPHome">
+  <img src="https://raw.githubusercontent.com/YunoHost/apps/main/logos/esphome.png" width="32px" alt="Logo of ESPHome">
   ESPHome, packaged for YunoHost
 </h1>
 
@@ -12,7 +12,7 @@ Build your own smart home devices using ESPHome
 
 [![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://esphome.io/)
 [![App Demo](https://img.shields.io/badge/App_Demo-blue?style=for-the-badge)](https://web.esphome.io/)
-![Version: 2025.3.3~ynh1](https://img.shields.io/badge/Version-2025.3.3~ynh1-rgba(0,150,0,1)?style=for-the-badge)
+[![Version: 2025.4.1~ynh1](https://img.shields.io/badge/Version-2025.4.1~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/esphome/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/esphome"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
