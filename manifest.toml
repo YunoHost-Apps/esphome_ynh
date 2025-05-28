@@ -21,7 +21,7 @@ cpe = "cpe:2.3:a:esphome:esphome"
 fund = "https://esphome.io/guides/supporters.html"
 
 [integration]
-yunohost = ">= 11.2.30"
+yunohost = ">= 12.0.9"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
@@ -51,9 +51,9 @@ ram.runtime = "30M"
 
     [resources.sources.main]
 
-    url = "https://github.com/esphome/esphome/archive/refs/tags/2025.5.0.tar.gz"
-    sha256 = "236ef51b7daaf99760165a3f901acd95f11c3b5170591ea96c1af9b77490271c"
-
+    url = "https://github.com/esphome/esphome/archive/refs/tags/2025.5.1.tar.gz"
+    sha256 = "78a541869c8893a57789b1f12193c0fc5a848b94517e5d93acb8e08fde04259a"
+    
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
