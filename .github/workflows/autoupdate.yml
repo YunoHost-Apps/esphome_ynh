@@ -3,6 +3,7 @@ name: Auto Update ESPHome Release
 permissions:
   contents: write
   pull-requests: write
+  actions: write
 
 on:
   schedule:
