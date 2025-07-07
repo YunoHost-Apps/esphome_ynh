@@ -48,6 +48,11 @@ jobs:
           sed -i "s|^src_url = .*|src_url = \"${{ env.TARBALL_URL }}\"|" manifest.toml
           sed -i "s/^src_hash = .*/src_hash = \"${{ env.ESPHOME_SHA256 }}\"/" manifest.toml
 
+      - name: Set git user
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
       - name: Commit and push changes
         run: |
           git add manifest.toml
