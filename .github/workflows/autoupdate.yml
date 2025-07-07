@@ -27,8 +27,8 @@ jobs:
 
       - name: Ensure up-to-date main branch
         run: |
-          git checkout main
-          git pull origin main
+          git checkout master
+          git pull origin master
 
       - name: Create or reset update branch
         run: |
