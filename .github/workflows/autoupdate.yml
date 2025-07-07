@@ -24,6 +24,12 @@ jobs:
           echo "RELEASE_TAG=$tag" >> $GITHUB_ENV
           echo "TARBALL_URL=$tarball_url" >> $GITHUB_ENV
 
+      - name: Create new branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "update/esphome-${{ env.RELEASE_TAG }}"
+
       - name: Download tarball and calculate SHA256
         run: |
           wget -O esphome.tar.gz "${{ env.TARBALL_URL }}"
@@ -35,12 +41,6 @@ jobs:
           sed -i "s/^version = .*/version = \"${{ env.RELEASE_TAG }}\"/" manifest.toml
           sed -i "s|^src_url = .*|src_url = \"${{ env.TARBALL_URL }}\"|" manifest.toml
           sed -i "s/^src_hash = .*/src_hash = \"${{ env.ESPHOME_SHA256 }}\"/" manifest.toml
-
-      - name: Create new branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b "update/esphome-${{ env.RELEASE_TAG }}"
 
       - name: Commit and push changes
         run: |
