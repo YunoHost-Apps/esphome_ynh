@@ -60,7 +60,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         id: cpr
         with:
-          base: main
+          base: master
           branch: "update/esphome-${{ env.RELEASE_TAG }}"
           title: "Update ESPHome to ${{ env.RELEASE_TAG }}"
           body: "Automated update to ESPHome ${{ env.RELEASE_TAG }}"
