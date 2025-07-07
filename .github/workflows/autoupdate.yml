@@ -1,0 +1,66 @@
+name: Auto Update ESPHome Release
+
+permissions:
+  contents: write
+  pull-requests: write
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # every day at 2am UTC
+  workflow_dispatch:
+
+jobs:
+  update-esphome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get latest ESPHome release info
+        id: esphome_release
+        run: |
+          release=$(curl -s https://api.github.com/repos/esphome/esphome/releases/latest)
+          tag=$(echo "$release" | jq -r .tag_name)
+          tarball_url=$(echo "$release" | jq -r .tarball_url)
+          echo "RELEASE_TAG=$tag" >> $GITHUB_ENV
+          echo "TARBALL_URL=$tarball_url" >> $GITHUB_ENV
+
+      - name: Download tarball and calculate SHA256
+        run: |
+          wget -O esphome.tar.gz "${{ env.TARBALL_URL }}"
+          sha256=$(sha256sum esphome.tar.gz | cut -d ' ' -f 1)
+          echo "ESPHOME_SHA256=$sha256" >> $GITHUB_ENV
+
+      - name: Update manifest.toml
+        run: |
+          sed -i "s/^version = .*/version = \"${{ env.RELEASE_TAG }}\"/" manifest.toml
+          sed -i "s|^src_url = .*|src_url = \"${{ env.TARBALL_URL }}\"|" manifest.toml
+          sed -i "s/^src_hash = .*/src_hash = \"${{ env.ESPHOME_SHA256 }}\"/" manifest.toml
+
+      - name: Create new branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "update/esphome-${{ env.RELEASE_TAG }}"
+
+      - name: Commit and push changes
+        run: |
+          git add manifest.toml
+          git commit -m "Update ESPHome to ${{ env.RELEASE_TAG }}"
+          git tag "${{ env.RELEASE_TAG }}"
+          git push origin "update/esphome-${{ env.RELEASE_TAG }}"
+          git push origin "${{ env.RELEASE_TAG }}"
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        id: cpr
+        with:
+          branch: "update/esphome-${{ env.RELEASE_TAG }}"
+          title: "Update ESPHome to ${{ env.RELEASE_TAG }}"
+          body: "Automated update to ESPHome ${{ env.RELEASE_TAG }}"
+          draft: false
+
+      - name: Comment !testme on PR
+        run: |
+          gh pr comment "${{ steps.cpr.outputs.pull-request-number }}" --body '!testme'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
