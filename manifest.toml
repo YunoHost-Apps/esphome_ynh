@@ -7,7 +7,7 @@ name = "ESPHome"
 description.en = "Build your own smart home devices using ESPHome"
 description.fr = "Créez vos propres appareils domestiques intelligents avec ESPHome"
 
-version = "2025.4.1~ynh1"
+version = "2025.7.3"
 
 maintainers = ["WGrav01"]
 
