@@ -19,6 +19,11 @@ Build your own smart home devices using ESPHome
 <a href="https://github.com/YunoHost-Apps/esphome_ynh/issues"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_report_an_issue.svg"/></a>
 </div>
 
+
+## Screenshots
+![Screenshot of ESPHome](./doc/screenshots/hero.png)
+![Screenshot of ESPHome](./doc/screenshots/screenshot.png)
+
 ## 📦 Developer info
 
 [![Automatic tests level](https://apps.yunohost.org/badge/cilevel/esphome)](https://ci-apps.yunohost.org/ci/apps/esphome/)
