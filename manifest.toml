@@ -54,7 +54,7 @@ ram.runtime = "30M"
     url = "https://github.com/esphome/esphome/archive/refs/tags/2025.5.2.tar.gz"
     sha256 = "eeb555c642660f277c590fd306b10681a620056f58109ba9112174f34174e384"
 
-    autoupdate.strategy = "latest_github_tag"
+    autoupdate.strategy = "latest_github_release"
 
     [resources.system_user]
 
