@@ -68,5 +68,5 @@ jobs:
             - Updated version to ${{ env.RELEASE_TAG }}
             - Updated source URL
             - Updated SHA256 hash
-          branch: "update/esphome-${{ env.RELEASE_TAG
+          branch: "update/esphome-${{ env.RELEASE_TAG}}"
 
