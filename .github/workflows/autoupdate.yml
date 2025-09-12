@@ -3,11 +3,10 @@ name: Auto Update ESPHome Release
 permissions:
   contents: write
   pull-requests: write
-  actions: write
 
 on:
   schedule:
-    - cron: '0 2 * * *' # every day at 2am UTC
+    - cron: '0 2 * * *'
   workflow_dispatch:
 
 jobs:
@@ -15,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get latest ESPHome release info
         id: esphome_release
@@ -25,54 +26,47 @@ jobs:
           echo "RELEASE_TAG=$tag" >> $GITHUB_ENV
           echo "TARBALL_URL=$tarball_url" >> $GITHUB_ENV
 
-      - name: Ensure up-to-date main branch
+      - name: Check if update needed
+        id: check_update
         run: |
-          git checkout master
-          git pull origin master
-
-      - name: Create or reset update branch
-        run: |
-          # Delete local branch if exists
-          git branch -D "update/esphome-${{ env.RELEASE_TAG }}" 2>/dev/null || true
-          git checkout -b "update/esphome-${{ env.RELEASE_TAG }}"
+          current_version=$(grep '^version = ' manifest.toml | sed 's/version = "$.*$"/\1/')
+          if [ "$current_version" = "${{ env.RELEASE_TAG }}" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "Already up to date with $current_version"
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "Update needed: $current_version -> ${{ env.RELEASE_TAG }}"
+          fi
 
       - name: Download tarball and calculate SHA256
+        if: steps.check_update.outputs.skip == 'false'
         run: |
           wget -O esphome.tar.gz "${{ env.TARBALL_URL }}"
           sha256=$(sha256sum esphome.tar.gz | cut -d ' ' -f 1)
           echo "ESPHOME_SHA256=$sha256" >> $GITHUB_ENV
+          rm esphome.tar.gz
 
       - name: Update manifest.toml
+        if: steps.check_update.outputs.skip == 'false'
         run: |
           sed -i "s/^version = .*/version = \"${{ env.RELEASE_TAG }}\"/" manifest.toml
           sed -i "s|^src_url = .*|src_url = \"${{ env.TARBALL_URL }}\"|" manifest.toml
           sed -i "s/^src_hash = .*/src_hash = \"${{ env.ESPHOME_SHA256 }}\"/" manifest.toml
 
-      - name: Set git user
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-
-      - name: Commit and push changes
-        run: |
-          git add manifest.toml
-          git commit -m "Update ESPHome to ${{ env.RELEASE_TAG }}"
-          git tag "${{ env.RELEASE_TAG }}"
-          git push origin "update/esphome-${{ env.RELEASE_TAG }}"
-          git push origin "${{ env.RELEASE_TAG }}"
-
       - name: Create pull request
+        if: steps.check_update.outputs.skip == 'false'
         uses: peter-evans/create-pull-request@v6
         id: cpr
         with:
-          base: master
-          branch: "update/esphome-${{ env.RELEASE_TAG }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update ESPHome to ${{ env.RELEASE_TAG }}"
           title: "Update ESPHome to ${{ env.RELEASE_TAG }}"
-          body: "Automated update to ESPHome ${{ env.RELEASE_TAG }}"
-          draft: false
+          body: |
+            Automated update to ESPHome ${{ env.RELEASE_TAG }}
+            
+            Changes:
+            - Updated version to ${{ env.RELEASE_TAG }}
+            - Updated source URL
+            - Updated SHA256 hash
+          branch: "update/esphome-${{ env.RELEASE_TAG
 
-      - name: Comment !testme on PR
-        run: |
-          gh pr comment "${{ steps.cpr.outputs.pull-request-number }}" --body '!testme'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
