@@ -21,15 +21,23 @@ jobs:
         id: esphome_release
         run: |
           release=$(curl -s https://api.github.com/repos/esphome/esphome/releases/latest)
+          if [ -z "$release" ] || [ "$release" = "null" ]; then
+            echo "Failed to fetch release info"
+            exit 1
+          fi
           tag=$(echo "$release" | jq -r .tag_name)
           tarball_url=$(echo "$release" | jq -r .tarball_url)
+          if [ "$tag" = "null" ] || [ "$tarball_url" = "null" ]; then
+            echo "Invalid release data"
+            exit 1
+          fi
           echo "RELEASE_TAG=$tag" >> $GITHUB_ENV
           echo "TARBALL_URL=$tarball_url" >> $GITHUB_ENV
 
       - name: Check if update needed
         id: check_update
         run: |
-          current_version=$(grep '^version = ' manifest.toml | sed 's/version = "$.*$"/\1/')
+          current_version=$(awk -F'"' '/^version = / {print $2}' manifest.toml)
           if [ "$current_version" = "${{ env.RELEASE_TAG }}" ]; then
             echo "skip=true" >> $GITHUB_OUTPUT
             echo "Already up to date with $current_version"
@@ -49,9 +57,9 @@ jobs:
       - name: Update manifest.toml
         if: steps.check_update.outputs.skip == 'false'
         run: |
-          sed -i "s/^version = .*/version = \"${{ env.RELEASE_TAG }}\"/" manifest.toml
-          sed -i "s|^src_url = .*|src_url = \"${{ env.TARBALL_URL }}\"|" manifest.toml
-          sed -i "s/^src_hash = .*/src_hash = \"${{ env.ESPHOME_SHA256 }}\"/" manifest.toml
+          sed -i 's/^version = ".*"/version = "${{ env.RELEASE_TAG }}"/' manifest.toml
+          sed -i 's|^src_url = ".*"|src_url = "${{ env.TARBALL_URL }}"|' manifest.toml
+          sed -i 's/^src_hash = ".*"/src_hash = "${{ env.ESPHOME_SHA256 }}"/' manifest.toml
 
       - name: Create pull request
         if: steps.check_update.outputs.skip == 'false'
@@ -69,4 +77,11 @@ jobs:
             - Updated source URL
             - Updated SHA256 hash
           branch: "update/esphome-${{ env.RELEASE_TAG}}"
+
+      - name: Comment !testme on PR
+        if: steps.check_update.outputs.skip == 'false' && steps.cpr.outputs.pull-request-number
+        run: |
+          gh pr comment "${{ steps.cpr.outputs.pull-request-number }}" --body '!testme'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
