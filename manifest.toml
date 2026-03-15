@@ -7,7 +7,7 @@ name = "ESPHome"
 description.en = "Build your own smart home devices using ESPHome"
 description.fr = "Créez vos propres appareils domestiques intelligents avec ESPHome"
 
-version = "2025.4.1~ynh1"
+version = "2026.2.4~ynh1"
 
 maintainers = ["WGrav01"]
 
@@ -21,7 +21,7 @@ cpe = "cpe:2.3:a:esphome:esphome"
 fund = "https://esphome.io/guides/supporters.html"
 
 [integration]
-yunohost = ">= 12.0.9"
+yunohost = ">= 12.1.17"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
@@ -51,8 +51,8 @@ ram.runtime = "30M"
 
     [resources.sources.main]
 
-    url = "https://github.com/esphome/esphome/archive/refs/tags/2025.5.2.tar.gz"
-    sha256 = "eeb555c642660f277c590fd306b10681a620056f58109ba9112174f34174e384"
+    url = "https://github.com/esphome/esphome/archive/refs/tags/2026.2.4.tar.gz"
+    sha256 = "146ec29da13433bb9219e1e24ddf3e3e1ee80b4960435af12678eb8a204c9d0e"
 
     autoupdate.strategy = "latest_github_release"
 
