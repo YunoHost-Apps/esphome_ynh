@@ -21,7 +21,6 @@ Build your own smart home devices using ESPHome
 
 
 ## Screenshots
-![Screenshot of ESPHome](./doc/screenshots/hero.png)
 ![Screenshot of ESPHome](./doc/screenshots/screenshot.png)
 
 ## 📦 Developer info
