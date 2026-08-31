@@ -7,7 +7,7 @@ name = "ESPHome"
 description.en = "Build your own smart home devices using ESPHome"
 description.fr = "Créez vos propres appareils domestiques intelligents avec ESPHome"
 
-version = "2026.7.4~ynh1"
+version = "2026.8.2~ynh1"
 
 maintainers = ["WGrav01"]
 
@@ -51,8 +51,8 @@ ram.runtime = "30M"
 
     [resources.sources.main]
 
-    url = "https://github.com/esphome/esphome/archive/refs/tags/2026.7.4.tar.gz"
-    sha256 = "1efacaa82f151d41ff72c0f29915a9b61d25419d96183d97f3b2391abe1f2036"
+    url = "https://github.com/esphome/esphome/archive/refs/tags/2026.8.2.tar.gz"
+    sha256 = "41180d6a1b8b69e5eedc98602e5a54c40d1a5f9e94299f7d48b57d470e90a0d1"
 
     autoupdate.strategy = "latest_github_release"
 
