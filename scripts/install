@@ -11,7 +11,8 @@ chown -R "$app:" "$install_dir"
 
 pushd $install_dir
     python3 -m venv $install_dir/venv
-    ynh_hide_warnings $install_dir/venv/bin/pip install esphome --upgrade pip
+    ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade pip esphome=="$(ynh_app_upstream_version)"
+    ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade esphome-device-builder
 popd
 
 #=================================================

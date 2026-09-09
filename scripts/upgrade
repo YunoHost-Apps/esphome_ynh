@@ -16,7 +16,8 @@ ynh_script_progression "Upgrading packages..."
 
 pushd $install_dir
     python3 -m venv $install_dir/venv
-    ynh_hide_warnings $install_dir/venv/bin/pip install esphome --upgrade
+    ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade pip esphome=="$(ynh_app_upstream_version)"
+    ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade esphome-device-builder
 popd
 
 chown -R "$app:" "$install_dir"
