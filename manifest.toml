@@ -49,10 +49,11 @@ ram.runtime = "30M"
 
     [resources.sources]
 
+    # Only used for auto-updater
     [resources.sources.main]
-
     url = "https://github.com/esphome/esphome/archive/refs/tags/2026.8.2.tar.gz"
     sha256 = "41180d6a1b8b69e5eedc98602e5a54c40d1a5f9e94299f7d48b57d470e90a0d1"
+    prefetch = false
 
     autoupdate.strategy = "latest_github_release"
 
